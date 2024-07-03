@@ -66,3 +66,41 @@ class myQueue {
             return val; 
         }
 };
+int main() {
+    int n, m;
+
+    cin >> n >> m;
+
+    myStack s;
+    int a;
+    for (int i = 0; i < n; i++) 
+    {
+        cin >> a;
+        s.push(a);
+    }
+
+    myQueue q;
+    int b;
+    for (int i = 0; i < m; i++) {
+        cin >> b;
+        q.enQueue(b);
+    }
+
+    for (int i = 0; i < min(n, m); i++) 
+    {
+        if (s.pop() != q.reQueue()) 
+        {
+            cout << "NO" << endl;
+            return 0;
+        }
+    }
+
+    if (n != m) {
+        cout << "NO" << endl;
+        return 0;
+    }
+
+    cout << "YES" << endl;
+
+    return 0;
+}
