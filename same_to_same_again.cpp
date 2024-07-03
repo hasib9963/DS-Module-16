@@ -33,3 +33,36 @@ class myStack {
             return val;
         }
 };
+class myQueue {
+    public:
+        Node* head = NULL;
+        Node* tail = NULL;
+        void enQueue(int val) {
+            Node* tmp = new Node();
+            tmp->val = val;
+            tmp->next = NULL;
+            tmp->prev = tail;
+            if (tail != NULL) {
+                tail->next = tmp;
+            }
+            tail = tmp;
+            if (head == NULL) {
+                head = tail;
+            }
+        }
+        int reQueue() {
+            if (head == NULL) {
+                return -1;
+            }
+            Node* tmp = head;
+            int val = tmp->val;
+            head = head->next;
+            if (head != NULL) {
+                head->prev = NULL;
+            } else {
+                tail = NULL; 
+            }
+            delete(tmp);
+            return val; 
+        }
+};
